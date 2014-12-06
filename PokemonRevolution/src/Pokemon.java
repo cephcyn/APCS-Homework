@@ -1,4 +1,3 @@
-
 public class Pokemon {
 
     private String name;
@@ -36,8 +35,9 @@ public class Pokemon {
             throw new IllegalArgumentException("Total absolute value of its attacks cannot exceed 150!");
         }
         if (attackenergy < attackvalue / 3) {
-            throw new IllegalArgumentException("Total attack energy must be more than 1/3 of the total absolute value!");
+            throw new IllegalArgumentException("Total attack energy must be more than 1/3 of its total absolute value!");
         }
+        //setting
         this.name = name;
         this.speed = speed;
         this.defense = defense;
@@ -48,14 +48,14 @@ public class Pokemon {
     public Pokemon(String name, Attack[] attacks) {
         this(name, 50, 50, 50, attacks);
     }
-    
+
     public void setDamage(int damage) {
         if (damage <= 0) {
             throw new IllegalArgumentException("Damage must be greater than 0!");
         }
         this.damage = damage;
     }
-    
+
     public void setEnergy(int energy) {
         if (energy <= 0) {
             throw new IllegalArgumentException("Energy must be greater than 0!");
@@ -100,9 +100,17 @@ public class Pokemon {
     }
 
     public String toString() {
-        String attackinfo = "";
-        for (int i = 0; i < attacks.length; i++) {
-            //todo stuff
+        String attackinfo = attacks[0] + "";
+        for (int i = 1; i < attacks.length; i++) {
+            attackinfo += ", " + attacks[i] + "";
         }
+        return this.name + " with "
+                + this.speed + " speed, "
+                + this.defense + " defense, "
+                + this.hp + " hit points, "
+                + this.damage + " damage, "
+                + this.energy + " energy, and its attacks: "
+                + attackinfo;
     }
+
 }
