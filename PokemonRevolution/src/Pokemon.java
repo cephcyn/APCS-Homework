@@ -20,16 +20,20 @@ public class Pokemon {
         if (attacks.length == 0) {
             throw new IllegalArgumentException("You have to have at least one attack!");
         }
+        //post conditions
         if (speed + defense + hp > 150) {
             throw new IllegalArgumentException("Speed, defense, and HP combined can't exceed 150!");
         }
         if (attacks.length > 3) {
             throw new IllegalArgumentException("You can't have more than 3 attacks!");
         }
-        //attack-relevant invariant testing
+        //attack-relevant testing
         int attackvalue = 0;
         int attackenergy = 0;
         for (int i = 0; i < attacks.length; i++) {
+            if (attacks[i] == null) {
+                throw new IllegalArgumentException("Each attack must ACTUALLY exist!");
+            }
             attackvalue += Math.abs(attacks[i].getValue());
             attackenergy += attacks[i].getEnergy();
         }
@@ -53,15 +57,15 @@ public class Pokemon {
 
     //mutators
     public void setDamage(int damage) {
-        if (damage <= 0) {
-            throw new IllegalArgumentException("Damage must be greater than 0!");
+        if (damage < 0) {
+            throw new IllegalArgumentException("Damage must be greater or equal to 0!");
         }
         this.damage = damage;
     }
 
     public void setEnergy(int energy) {
-        if (energy <= 0) {
-            throw new IllegalArgumentException("Energy must be greater than 0!");
+        if (energy < 0) {
+            throw new IllegalArgumentException("Energy must be greater or equal to 0!");
         }
         this.energy = energy;
     }
