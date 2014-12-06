@@ -8,6 +8,7 @@ public class Grass extends Pokemon {
         super(name, attacks);
     }
 
+    //etc methods
     public boolean isWeak(Pokemon pokemon) {
         return pokemon instanceof Fire;
     }

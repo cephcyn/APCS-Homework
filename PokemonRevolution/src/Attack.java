@@ -4,6 +4,7 @@ public class Attack {
     private int value;
     private int energy;
 
+    //constructors
     public Attack(String name, int value, int energy) {
         //invariant testing
         if (name == null || name.equals("")) {
@@ -25,6 +26,7 @@ public class Attack {
         this(name, value, 0);
     }
 
+    //accessors
     public String getName() {
         return this.name;
     }
