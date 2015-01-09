@@ -1,4 +1,5 @@
-APCS-Homework
+Pokemon Revolution
 =============
 
-Various homework assignments not directly linked to any major project for APCS 2014-2015
+Pokemon Revolution homework assignment, in which we designed multiple classes of Pokemon and then one of our own.
+This homework project was used to exercise class hierarchies and extension/superconstructor calls.
