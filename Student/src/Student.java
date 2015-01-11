@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Student implements Comparable<Student> {
 
@@ -95,12 +96,13 @@ public class Student implements Comparable<Student> {
         list.add(new Student("Derpy Middle School", 7, "Kenny", "Altira", 49884));
         list.add(new Student("Derpy Middle School", 7, "Benny", "Altira", 49895));
         list.add(new Student("Generic Middle School", 9, "Leslie", "Burke", 66576));
+        Collections.sort(list);
         String print = "";
         for (Student student : list) {
             print += student.getFirstName() + " "
                     + student.getLastName() + " "
                     + "(ID: " + student.getID() + "): "
-                    + student.getSchoolName() + " "
+                    + student.getSchoolName() + ", "
                     + "grade " + student.getGrade() + "\n";
         }
         System.out.print(print);
