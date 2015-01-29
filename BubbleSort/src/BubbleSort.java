@@ -24,6 +24,7 @@ public class BubbleSort {
     }
 
     private static void swap(int[] input, int index) {
+        //swaps input[j] with the thing after it
         int temp = input[index];
         input[index] = input[index + 1];
         input[index + 1] = temp;
