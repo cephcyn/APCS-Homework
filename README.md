@@ -1,4 +1,4 @@
 APCS-Homework
 =============
 
-Various homework assignments not directly linked to any major project for APCS 2014-2015
+Student, a class in which we exercised compareTo skills. We compared students by school, grade, name, and student ID, (possibly among other factors).
