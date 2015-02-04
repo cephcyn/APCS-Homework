@@ -1,18 +1,30 @@
 
 public class BubbleSort implements ISorter {
+    
+    public BubbleSort() {
+    }
 
     public SortStats sort(int[] a) {
-        int numswaps = 0;
+        //init sortstat variables
+        int numAssignments = 0;
+        int numComparisons = 0;
         long startTime = System.nanoTime();
+        //actual sort alg
         for (int i = a.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
+                numComparisons++;
                 if (a[j] > a[j + 1]) {
                     swap(a, j);
-                    numswaps++;
+                    //each swap uses three assignments
+                    numAssignments += 3;
                 }
             }
         }
-        
+        return new SortStats("Bubble Sort", 
+                a.length, 
+                numComparisons, 
+                numAssignments, 
+                System.nanoTime() - startTime);
     }
 
     private static void swap(int[] input, int index) {

@@ -1,11 +1,11 @@
 
 public class SortStats implements ISortStats {
 
-    String algname;
-    int numItems;
-    int numComparisons;
-    int numMoves;
-    long numNanoseconds;
+    private String algname;
+    private int numItems;
+    private int numComparisons;
+    private int numMoves;
+    private long numNanoseconds;
 
     public SortStats(String algname, int numItems, int numComparisons, int numMoves, long numNanoseconds) {
         this.algname = algname;
@@ -33,5 +33,15 @@ public class SortStats implements ISortStats {
 
     public long getNumNanoseconds() {
         return this.numNanoseconds;
+    }
+    
+    public String toString() {
+        return 
+                "Algorithm      : " + getAlgorithm() + "\n" + 
+                "NumItems       : " + getNumItems() + "\n" + 
+                "NumComparisons : " + getNumComparisons() + "\n" + 
+                "NumMoves       : " + getNumMoves() + "\n" + 
+                "NumNanoseconds : " + getNumNanoseconds();
+
     }
 }
