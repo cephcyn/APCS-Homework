@@ -30,10 +30,8 @@ public class Program {
         for (int j = 0; j < sorters.length; j++) {
             int[] copiedlist = list.clone();
             //sorting reverse
-            System.out.println(printArray(copiedlist));
             System.out.println(testAlgorithm(copiedlist, sorters[j]));
             //sorting in order
-            System.out.println(printArray(copiedlist));
             System.out.println(testAlgorithm(copiedlist, sorters[j]));
         }
     }
