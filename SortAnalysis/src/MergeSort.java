@@ -16,8 +16,10 @@ public class MergeSort implements ISorter {
         this.numComparisons = 0;
         this.numAssignments = 0;
         long startTime = System.nanoTime();
+        
         //call the actual sort alg
-        splitsort(a);
+        actualsort(a);
+        
         return new SortStats("Merge Sort",
                 a.length,
                 this.numComparisons,
@@ -25,7 +27,7 @@ public class MergeSort implements ISorter {
                 System.nanoTime() - startTime);
     }
 
-    private void splitsort(int[] a) {
+    private void actualsort(int[] a) {
         if (a.length > 1) {
             //split into left and right
             int[] left = Arrays.copyOfRange(a, 0, a.length / 2);
@@ -34,8 +36,8 @@ public class MergeSort implements ISorter {
             numAssignments += a.length - a.length / 2;
 
             //sort each subarray
-            splitsort(left);
-            splitsort(right);
+            actualsort(left);
+            actualsort(right);
 
             //merge the two subarrays
             merge(a, left, right);

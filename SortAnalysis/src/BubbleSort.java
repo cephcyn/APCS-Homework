@@ -14,8 +14,10 @@ public class BubbleSort implements ISorter {
         this.numComparisons = 0;
         this.numAssignments = 0;
         long startTime = System.nanoTime();
+        
         //call the actual sort alg
         actualsort(a);
+        
         return new SortStats("Bubble Sort",
                 a.length,
                 numComparisons,
