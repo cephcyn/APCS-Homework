@@ -30,6 +30,7 @@ public class SelectionSort implements ISorter {
             int minindex = 0;
             for (int currentread = 0; currentread <= i; currentread++) {
                 numComparisons++;
+                //get the index of the minval
                 if (a[currentread] < a[minindex]) {
                     minindex = currentread;
                 }
@@ -39,6 +40,7 @@ public class SelectionSort implements ISorter {
     }
     
     private void swap(int[] a, int i, int min) {
+        //swaps a[i] with a[min]
         int temp = a[i];
         numAssignments++;
         a[i] = a[min];
