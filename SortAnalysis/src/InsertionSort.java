@@ -26,29 +26,17 @@ public class InsertionSort implements ISorter {
     }
 
     private void actualsort(int[] a) {
-        for (int i = 0; i < a.length; i++) {
-            int newindex = 0;
-            while (a[newindex] < a[i] && newindex < i) {
+        for (int sorting = 1; sorting < a.length; sorting++) {
+            int temp = a[sorting];
+            int dest;
+            numComparisons++;
+            for (dest = sorting; dest > 0 && a[dest - 1] > temp; dest--) {
+                a[dest] = a[dest - 1];
                 numComparisons++;
-                newindex++;
+                numAssignments++;
             }
-            insertvalue(a, newindex, i);
-        }
-    }
-
-    private void insertvalue(int[] a, int newindex, int insertindex) {
-        //inserts the given indx-value to the given point,
-        //then shifts everything after it down one slot,
-        //consuming the insertindex value
-
-        int temp = a[insertindex];
-        numAssignments++;
-        for (int i = newindex; i < insertindex; i++) {
-            a[i + 1] = a[i];
+            a[dest] = temp;
             numAssignments++;
         }
-        a[newindex] = temp;
-        numAssignments++;
     }
-
 }

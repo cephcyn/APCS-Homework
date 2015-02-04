@@ -38,7 +38,7 @@ public class SelectionSort implements ISorter {
             swap(a, i, minindex);
         }
     }
-    
+
     private void swap(int[] a, int i, int min) {
         //swaps a[i] with a[min]
         int temp = a[i];
@@ -47,5 +47,6 @@ public class SelectionSort implements ISorter {
         numAssignments++;
         a[min] = temp;
         numAssignments++;
+
     }
 }
