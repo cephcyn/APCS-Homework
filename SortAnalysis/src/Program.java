@@ -1,8 +1,22 @@
 
 import java.util.Random;
 
+/**
+ * The class that contains the main method, which is used to test and display
+ * the feedback given by the other classes.
+ *
+ * @author Joyce
+ */
 public class Program {
 
+    /**
+     * Main method. Runs two different sets of tests, first applying each sort
+     * algorithm to randomly-populated arrays of increasing length (0 to 4096 by
+     * a factor of 2), then applying each algorithm on descending and ascending
+     * arrays of length 4096.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int[] list;
         ISorter[] sorters = new ISorter[]{
@@ -10,32 +24,51 @@ public class Program {
             new InsertionSort(),
             new MergeSort(),
             new SelectionSort()};
+        String errormessage
+                = "ERROR ERROR ERROR! THE SORTING ALGORITHM FAILED TO SORT CORRECTLY! YOU FAILED!!!";
 
-        System.out.println("Test Set One:");
+        System.out.println("-- TEST SET 1:");
         System.out.println();
         //set one (random init, varying length)
         for (int i = 1; i <= 4096; i *= 2) {
             list = new int[i];
             randomInit(list);
             for (int j = 0; j < sorters.length; j++) {
-                System.out.println(testAlgorithm(list.clone(), sorters[j]));
+                int[] copylist = list.clone();
+                System.out.println(testAlgorithm(copylist, sorters[j]));
+                if (!Check.isInOrder(copylist)) {
+                    System.out.println(errormessage);
+                }
             }
         }
 
-        System.out.println("Test Set Two:");
+        System.out.println("-- TEST SET 2:");
         System.out.println();
         //set two (custom init, fixed length)
         list = new int[4096];
         reverseInit(list);
         for (int j = 0; j < sorters.length; j++) {
-            int[] copiedlist = list.clone();
+            int[] copylist = list.clone();
             //sorting reverse
-            System.out.println(testAlgorithm(copiedlist, sorters[j]));
+            System.out.println("Testing descending:");
+            System.out.println(testAlgorithm(copylist, sorters[j]));
+            if (!Check.isInOrder(copylist)) {
+                System.out.println(errormessage);
+            }
             //sorting in order
-            System.out.println(testAlgorithm(copiedlist, sorters[j]));
+            System.out.println("Testing ascending (presorted):");
+            System.out.println(testAlgorithm(copylist, sorters[j]));
+            if (!Check.isInOrder(copylist)) {
+                System.out.println(errormessage);
+            }
         }
     }
 
+    /**
+     * Populates the input array with randomly selected integers.
+     *
+     * @param a
+     */
     private static void randomInit(int[] a) {
         Random rand = new Random();
         for (int i = 0; i < a.length; i++) {
@@ -43,6 +76,11 @@ public class Program {
         }
     }
 
+    /**
+     * Populates the input array with descending integers.
+     *
+     * @param a
+     */
     private static void reverseInit(int[] a) {
         Random rand = new Random();
         int limit = Integer.MAX_VALUE;
@@ -52,10 +90,26 @@ public class Program {
         }
     }
 
+    /**
+     * Method that runs the sorting algorithm, retrieves its SortStats data,
+     * then returns it in the form of a string with a line break (so there is a
+     * line break between each set of data).
+     *
+     * @param a
+     * @param alg
+     * @return String
+     */
     private static String testAlgorithm(int[] a, ISorter alg) {
         return alg.sort(a) + "\n";
     }
 
+    /**
+     * Unused method (used in testing) that displays arrays in [element,
+     * element] form.
+     *
+     * @param a
+     * @return String
+     */
     private static String printArray(int[] a) {
         String output = "[" + a[0];
         for (int i = 1; i < a.length; i++) {

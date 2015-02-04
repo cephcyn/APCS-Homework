@@ -1,14 +1,31 @@
 
+/**
+ * Class that contains methods necessary to sort a given array with the
+ * selection sort algorithm.
+ *
+ * @author Joyce
+ */
 public class SelectionSort implements ISorter {
 
     int numComparisons;
     int numAssignments;
 
+    /**
+     * Constructor for the SelectionSort class, initializes all fields to 0.
+     */
     public SelectionSort() {
         this.numComparisons = 0;
         this.numAssignments = 0;
     }
 
+    /**
+     * Sorts the given array a. This method uses actualsort() to do the sorting
+     * work, to be consistent with MergeSort (which uses recursion, so a
+     * separate method is necessary).
+     *
+     * @param a
+     * @return SortStats
+     */
     public SortStats sort(int[] a) {
         //init sortstat variables (this is separate so that variable tracking works)
         this.numComparisons = 0;
@@ -25,6 +42,12 @@ public class SelectionSort implements ISorter {
                 System.nanoTime() - startTime);
     }
 
+    /**
+     * Sorts the input array a using selection sort method. This is only called
+     * by sort().
+     *
+     * @param a
+     */
     private void actualsort(int[] a) {
         for (int i = 0; i < a.length - 1; i++) {
             int minindex = i;
@@ -39,6 +62,13 @@ public class SelectionSort implements ISorter {
         }
     }
 
+    /**
+     * Swaps a[i] with a[min].
+     *
+     * @param a
+     * @param i
+     * @param min
+     */
     private void swap(int[] a, int i, int min) {
         //swaps a[i] with a[min]
         int temp = a[i];

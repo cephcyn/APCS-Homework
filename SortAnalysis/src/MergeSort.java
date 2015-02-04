@@ -1,16 +1,30 @@
 
 import java.util.Arrays;
 
+/**
+ * Class that contains methods necessary to sort a given array with the merge sort algorithm.
+ * @author Joyce
+ */
 public class MergeSort implements ISorter {
 
     int numComparisons;
     int numAssignments;
 
+    /**
+     * Constructor for the MergeSort class, sets all fields to zero.
+     */
     public MergeSort() {
         this.numComparisons = 0;
         this.numAssignments = 0;
     }
 
+    /**
+     * Sorts the given array a. This method uses actualsort() to do the sorting work,
+     * as merge sort uses recursion. Since variable tracking is reset per-call of this method,
+     * a separate method is necessary.
+     * @param a
+     * @return SortStats
+     */
     public SortStats sort(int[] a) {
         //init sortstat variables (this is separate so that variable tracking works)
         this.numComparisons = 0;
@@ -26,7 +40,12 @@ public class MergeSort implements ISorter {
                 this.numAssignments,
                 System.nanoTime() - startTime);
     }
-
+    
+    /**
+     * Sorts the given array a. This method calls itself, therefore it is necessary
+     * to put it separately from sort().
+     * @param a 
+     */
     private void actualsort(int[] a) {
         if (a.length > 1) {
             //split into left and right
@@ -44,6 +63,13 @@ public class MergeSort implements ISorter {
         }
     }
 
+    /**
+     * Joins the two sorted arrays left and right into the larger array a, reading
+     * the header of each array to put its contents into a as appropriate.
+     * @param a
+     * @param left
+     * @param right 
+     */
     private void merge(int a[], int[] left, int[] right) {
         int il = 0;
         int ir = 0;

@@ -1,14 +1,31 @@
 
+/**
+ * Class that contains methods necessary to sort a given array with the
+ * insertion sort algorithm.
+ *
+ * @author Joyce
+ */
 public class InsertionSort implements ISorter {
 
     int numComparisons;
     int numAssignments;
 
+    /**
+     * Constructor for the InsertionSort class, initializes all fields to 0.
+     */
     public InsertionSort() {
         this.numComparisons = 0;
         this.numAssignments = 0;
     }
 
+    /**
+     * Sorts the given array a. This method uses actualsort() to do the sorting
+     * work, to be consistent with MergeSort (which uses recursion, so a
+     * separate method is necessary).
+     *
+     * @param a
+     * @return SortStats
+     */
     public SortStats sort(int[] a) {
         //init sortstat variables (this is separate so that variable tracking works)
         this.numComparisons = 0;
@@ -25,6 +42,11 @@ public class InsertionSort implements ISorter {
                 System.nanoTime() - startTime);
     }
 
+    /**
+     * Sorts the contents of int array a from smallest to largest.
+     *
+     * @param a
+     */
     private void actualsort(int[] a) {
         for (int sorting = 1; sorting < a.length; sorting++) {
             int temp = a[sorting];
