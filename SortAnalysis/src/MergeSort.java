@@ -29,7 +29,9 @@ public class MergeSort implements ISorter {
         if (a.length > 1) {
             //split into left and right
             int[] left = Arrays.copyOfRange(a, 0, a.length / 2);
+            numAssignments += a.length / 2;
             int[] right = Arrays.copyOfRange(a, a.length / 2, a.length);
+            numAssignments += a.length - a.length / 2;
 
             //sort each subarray
             splitsort(left);
