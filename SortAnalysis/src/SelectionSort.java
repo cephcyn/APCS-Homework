@@ -27,8 +27,8 @@ public class SelectionSort implements ISorter {
 
     private void actualsort(int[] a) {
         for (int i = 0; i < a.length - 1; i++) {
-            int minindex = 0;
-            for (int currentread = 0; currentread <= i; currentread++) {
+            int minindex = i;
+            for (int currentread = i; currentread < a.length; currentread++) {
                 numComparisons++;
                 //get the index of the minval
                 if (a[currentread] < a[minindex]) {
