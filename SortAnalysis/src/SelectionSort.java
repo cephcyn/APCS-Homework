@@ -26,7 +26,7 @@ public class SelectionSort implements ISorter {
      * @param a
      * @return SortStats
      */
-    public SortStats sort(int[] a) {
+    public ISortStats sort(int[] a) {
         //init sortstat variables (this is separate so that variable tracking works)
         this.numComparisons = 0;
         this.numAssignments = 0;

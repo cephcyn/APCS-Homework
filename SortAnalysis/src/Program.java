@@ -96,9 +96,7 @@ public class Program {
     }
 
     /**
-     * Method that displays the SortStats in a pretty way. Seriously, how would
-     * using the interface ISortStats in any way be efficient polymorphism? How
-     * else would you display the sorting statistics?
+     * Method that displays the result of sorting (ISortStats) in a pretty way.
      *
      * @param a
      * @param alg
