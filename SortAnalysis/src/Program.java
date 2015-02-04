@@ -35,7 +35,9 @@ public class Program {
             randomInit(list);
             for (int j = 0; j < sorters.length; j++) {
                 int[] copylist = list.clone();
-                System.out.println(testAlgorithm(copylist, sorters[j]));
+                System.out.println(displayStats(sorters[j].sort(copylist)));
+
+                //if the sort didn't work, display error
                 if (!Check.isInOrder(copylist)) {
                     System.out.println(errormessage);
                 }
@@ -51,13 +53,16 @@ public class Program {
             int[] copylist = list.clone();
             //sorting reverse
             System.out.println("Testing descending:");
-            System.out.println(testAlgorithm(copylist, sorters[j]));
+            System.out.println(displayStats(sorters[j].sort(copylist)));
+            //if the sort didn't work, display error
             if (!Check.isInOrder(copylist)) {
                 System.out.println(errormessage);
             }
+
             //sorting in order
             System.out.println("Testing ascending (presorted):");
-            System.out.println(testAlgorithm(copylist, sorters[j]));
+            System.out.println(displayStats(sorters[j].sort(copylist)));
+            //if the sort didn't work, display error
             if (!Check.isInOrder(copylist)) {
                 System.out.println(errormessage);
             }
@@ -91,16 +96,16 @@ public class Program {
     }
 
     /**
-     * Method that runs the sorting algorithm, retrieves its SortStats data,
-     * then returns it in the form of a string with a line break (so there is a
-     * line break between each set of data).
+     * Method that displays the SortStats in a pretty way. Seriously, how would
+     * using the interface ISortStats in any way be efficient polymorphism? How
+     * else would you display the sorting statistics?
      *
      * @param a
      * @param alg
      * @return String
      */
-    private static String testAlgorithm(int[] a, ISorter alg) {
-        return alg.sort(a) + "\n";
+    private static String displayStats(ISortStats alg) {
+        return alg + "\n";
     }
 
     /**
