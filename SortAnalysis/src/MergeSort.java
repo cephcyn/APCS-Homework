@@ -95,7 +95,7 @@ public class MergeSort implements ISorter {
             } else {
                 a[i] = right[ir];
                 ir++;
-                numComparisons++;
+                numComparisons ++;
                 numAssignments++;
             }
         }
