@@ -85,11 +85,13 @@ public class SortStats implements ISortStats {
      * @return String
      */
     public String toString() {
-        return "\"Algorithm\"      : \"" + getAlgorithm() + "\"\n"
-                + "\"NumItems\"       : \"" + getNumItems() + "\"\n"
-                + "\"NumComparisons\" : \"" + getNumComparisons() + "\"\n"
-                + "\"NumMoves\"       : \"" + getNumMoves() + "\"\n"
-                + "\"NumNanoseconds\" : \"" + getNumNanoseconds() + "\"";
+        return "{" + "\n"
+                + "    \"Algorithm\"      : \"" + getAlgorithm() + "\"\n"
+                + "    \"NumItems\"       : \"" + getNumItems() + "\"\n"
+                + "    \"NumComparisons\" : \"" + getNumComparisons() + "\"\n"
+                + "    \"NumMoves\"       : \"" + getNumMoves() + "\"\n"
+                + "    \"NumNanoseconds\" : \"" + getNumNanoseconds() + "\"\n"
+                + "}";
 
     }
 }
