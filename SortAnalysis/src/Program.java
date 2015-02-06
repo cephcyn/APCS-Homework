@@ -27,8 +27,6 @@ public class Program {
         String errormessage
                 = "ERROR ERROR ERROR! THE SORTING ALGORITHM FAILED TO SORT CORRECTLY! YOU FAILED!!!";
 
-        System.out.println("-- TEST SET 1:");
-        System.out.println();
         //set one (random init, varying length)
         for (int i = 1; i <= 4096; i *= 2) {
             list = new int[i];
@@ -44,15 +42,12 @@ public class Program {
             }
         }
 
-        System.out.println("-- TEST SET 2:");
-        System.out.println();
         //set two (custom init, fixed length)
         list = new int[4096];
         reverseInit(list);
         for (int j = 0; j < sorters.length; j++) {
             int[] copylist = list.clone();
             //sorting reverse
-            System.out.println("Testing descending:");
             System.out.println(displayStats(sorters[j].sort(copylist)));
             //if the sort didn't work, display error
             if (!Check.isInOrder(copylist)) {
@@ -60,7 +55,6 @@ public class Program {
             }
 
             //sorting in order
-            System.out.println("Testing ascending (presorted):");
             System.out.println(displayStats(sorters[j].sort(copylist)));
             //if the sort didn't work, display error
             if (!Check.isInOrder(copylist)) {
