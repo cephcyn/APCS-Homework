@@ -1,24 +1,28 @@
+
 /**
  *
  * @author s-zhouj
  */
 public class RecursiveBinarySearch {
+
     public static void main(String[] args) {
-        
+        int[] a = {0, 1, 2, 3, 4, 5};
+        System.out.println(binarySearch(a, 2));
     }
-    public int binarySearch(int[] a, int target) {
-        
+
+    public static int binarySearch(int[] a, int target) {
+        return recursivePortion(a, target, 0, a.length);
     }
-    public int oldBinarySearch(int[] a, int target) {
-        int min = 0, max = a.length - 1;
-        while(min <= max) {
-            int index = (max + min) / 2;
-            if (target == a[index]) {
-                return index;
-            } else if (target > a[index]) {
-                min = index + 1;
+
+    private static int recursivePortion(int[] a, int target, int min, int max) {
+        int mid = (min + max) / 2;
+        if (a.length != 1) {
+            if (a[mid] == target) {
+                return mid;
+            } else if (a[mid] < target) {
+                return recursivePortion(a, target, min, mid);
             } else {
-                max = index - 1;
+                return recursivePortion(a, target, mid, max);
             }
         }
         return -1;
