@@ -1,4 +1,4 @@
 APCS-Homework
 =============
 
-Various homework assignments not directly linked to any major project for APCS 2014-2015
+SortAnalysis, homework project where we wrote all four sort algorithms and analyzed their efficiency in a separate paper. The four sort algorithms were MergeSort, SelectionSort, InsertionSort, and BubbleSort.
