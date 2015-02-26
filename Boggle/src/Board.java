@@ -8,6 +8,8 @@ import java.util.Random;
  */
 public class Board {
 
+    private static final String[] PREFIXES = {"RE-", "STR-", "UN-"};
+
     private WordList wordlist;
     private String[][] letters;
 
@@ -23,18 +25,20 @@ public class Board {
         Random rand = new Random();
         //randomly put in a prefix (50% chance)
         if (rand.nextDouble() >= 0.5) {
-            String[] prefixes = {"RE-", "STR-", "UN-"};
-            letters[rand.nextInt(letters.length)][rand.nextInt(letters.length)] = prefixes[rand.nextInt(prefixes.length)];
+            letters[rand.nextInt(letters.length)][rand.nextInt(letters.length)] = PREFIXES[rand.nextInt(PREFIXES.length)];
         }
     }
 
     public ArrayList<String> find() {
+        //TODO
         return new ArrayList<String>(5);
     }
 
     public String toString() {
         String output = "";
+        //print row
         for (int i = 0; i < letters.length; i++) {
+            //print letter
             for (int j = 0; j < letters.length; j++) {
                 output += spaceLetters(letters[i][j]);
             }
@@ -55,7 +59,7 @@ public class Board {
             }
         }
         //space the letter
-        while (output.length() < longest) {
+        while (output.length() <= longest) {
             output += " ";
         }
         return output;

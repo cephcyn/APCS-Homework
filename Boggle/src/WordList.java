@@ -20,6 +20,9 @@ public class WordList extends ArrayList<String> {
             Scanner scanner = new Scanner(file);
 
             try {
+                // EC VARIABLES
+                int[] letterCount = new int[26];
+                int totalletters = 0;
 
                 while (scanner.hasNext()) {
                     String word = scanner.next();
@@ -33,8 +36,6 @@ public class WordList extends ArrayList<String> {
 
                         // EXTRA CREDIT PORTION
                         // run through word and add letters (for nextLetter())
-                        int[] letterCount = new int[26];
-                        int totalletters = 0;
                         for (int i = 0; i < word.length(); i++) {
                             letterCount[word.toUpperCase().charAt(i) - 'A']++;
                             totalletters++;
@@ -160,6 +161,6 @@ public class WordList extends ArrayList<String> {
                 return "" + (char) ('A' + i);
             }
         }
-        return "Z"; //Should not happen
+        return ":("; //Should not happen
     }
 }
