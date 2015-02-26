@@ -8,8 +8,8 @@ import java.util.Random;
  */
 public class Board {
 
-    WordList wordlist;
-    String[][] letters;
+    private WordList wordlist;
+    private String[][] letters;
 
     public Board(WordList wordlist, int boardSize) {
         this.wordlist = wordlist;
