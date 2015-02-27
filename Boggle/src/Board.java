@@ -38,14 +38,16 @@ public class Board {
         boolean[][] searched = new boolean[letters.length][letters.length];
         for (int i = 0; i < letters.length; i++) {
             for (int j = 0; j < letters.length; j++) {
-                find(result, searched, "", 0, i, j);
+                find(result, searched, "", i, j);
             }
         }
+
+        //find(result, searched, "", 0, 2, 0);
         Collections.sort(result, new WordComparator());
         return result;
     }
 
-    private void find(ArrayList<String> foundwords, boolean[][] breadcrumbs, String sofar, int letterssearched, int row, int column) {
+    private void find(ArrayList<String> foundwords, boolean[][] breadcrumbs, String word, int row, int column) {
         //square has to be in bounds
         //and unsearched
         //and fewer letters than maxlength
@@ -53,28 +55,30 @@ public class Board {
         if ((row >= 0 && row < letters.length)
                 && (column >= 0 && column < letters.length)
                 && (breadcrumbs[row][column] == false)
-                && (letterssearched < wordlist.getLongestWordLength())
-                && (letterssearched == 0 || letters[row][column].length() == 1)) {
+                && (word.length() <= wordlist.getLongestWordLength())
+                && (word.length() == 0 || letters[row][column].length() == 1)) {
             //mark changes
             breadcrumbs[row][column] = true;
             String testingletter = letters[row][column];
+            //remove the dash after the prefix if it's a prefix
             if (testingletter.length() > 1) {
                 testingletter = testingletter.substring(0, testingletter.length() - 1);
             }
-            //test current word
-            if (wordlist.contains(sofar) && !foundwords.contains(sofar)) {
-                foundwords.add(sofar);
+            word += testingletter;
+            //test current word, put it in if it's a word and not repeated
+            if (wordlist.contains(word) && !foundwords.contains(word)) {
+                foundwords.add(word);
             }
-            //run eight tests
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column + 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row, column + 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column + 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column - 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row, column - 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column - 1);
-            //undo changes
+            //run eight tests on neighboring squares
+            find(foundwords, breadcrumbs, word, row - 1, column);
+            find(foundwords, breadcrumbs, word, row - 1, column + 1);
+            find(foundwords, breadcrumbs, word, row, column + 1);
+            find(foundwords, breadcrumbs, word, row + 1, column + 1);
+            find(foundwords, breadcrumbs, word, row + 1, column);
+            find(foundwords, breadcrumbs, word, row + 1, column - 1);
+            find(foundwords, breadcrumbs, word, row, column - 1);
+            find(foundwords, breadcrumbs, word, row - 1, column - 1);
+            //undo changes (breadcrumbs)
             breadcrumbs[row][column] = false;
         }
     }

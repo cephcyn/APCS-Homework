@@ -9,7 +9,7 @@ public class Program {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Boggle, by Joyce Zhou.");
-        WordList wordlist = new WordList("WordList.txt", 3, Integer.MAX_VALUE);
+        WordList wordlist = new WordList("WordList.txt", 3, 8);
         Board board = new Board(wordlist, 4);
         System.out.println(board);
         System.out.println(formatWordList(board.find()));
