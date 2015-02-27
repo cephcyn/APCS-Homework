@@ -66,14 +66,14 @@ public class Board {
                 foundwords.add(sofar);
             }
             //run eight tests
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column + 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row, column + 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column + 1);
             find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column - 1);
-            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row, column - 1);
             find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column + 1);
+            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row, column + 1);
+            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column + 1);
+            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column);
+            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row + 1, column - 1);
+            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row, column - 1);
+            find(foundwords, breadcrumbs, sofar + testingletter, letterssearched + testingletter.length(), row - 1, column - 1);
             //undo changes
             breadcrumbs[row][column] = false;
         }
