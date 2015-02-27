@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -30,8 +31,19 @@ public class Board {
     }
 
     public ArrayList<String> find() {
-        //TODO
-        return new ArrayList<String>(5);
+        ArrayList<String> result = new ArrayList<String>();
+        String[][] searched = new String[letters.length][letters.length];
+        for(int i = 0; i < letters.length; i++) {
+            for(int j = 0; j < letters.length; j++) {
+                find(result, searched, letters[i][j], i, j);
+            }
+        }
+        Collections.sort(result, new WordComparator());
+        return result;
+    }
+    
+    private void find(ArrayList<String> foundwords, String[][] breadcrumbs, String sofar, int row, int column) {
+        
     }
 
     public String toString() {
