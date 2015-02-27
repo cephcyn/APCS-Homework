@@ -10,6 +10,6 @@ public class Program {
         WordList wordlist = new WordList("WordList.txt", 3, Integer.MAX_VALUE);
         Board board = new Board(wordlist, 4);
         System.out.println(board);
-        //TODO print find()
+        System.out.println(board.find());
     }
 }
