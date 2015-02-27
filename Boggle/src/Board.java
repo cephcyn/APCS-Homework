@@ -16,21 +16,21 @@ public class Board {
 
     public Board(WordList wordlist, int boardSize) {
         this.wordlist = wordlist;
-        letters = new String[][]{{"T", "E", "A", "M"}, {"S", "Y", "F", "S"}, {"P", "A", "T", "E"}, {"G", "N", "I", "D"}};
-        /* TODO: THIS PART ACTUALLY WORKS, BUT I HAVE TO TEST WITH A PREDEFINED BOARD        
-         letters = new String[boardSize][boardSize];
-         //fill array with letters
-         for (int i = 0; i < letters.length; i++) {
-         for (int j = 0; j < letters.length; j++) {
-         letters[i][j] = wordlist.nextLetter();
-         }
-         }
-         Random rand = new Random();
-         //randomly put in a prefix (50% chance)
-         if (rand.nextDouble() >= 0.5) {
-         letters[rand.nextInt(letters.length)][rand.nextInt(letters.length)] = PREFIXES[rand.nextInt(PREFIXES.length)];
-         }
-         */
+        // testing:
+        //letters = new String[][]{{"T", "E", "A", "M"}, {"S", "Y", "F", "S"}, {"P", "A", "T", "E"}, {"G", "N", "I", "D"}};
+        letters = new String[boardSize][boardSize];
+        //fill array with letters
+        for (int i = 0; i < letters.length; i++) {
+            for (int j = 0; j < letters.length; j++) {
+                letters[i][j] = wordlist.nextLetter();
+            }
+        }
+        Random rand = new Random();
+        //randomly put in a prefix (50% chance)
+        if (rand.nextDouble() >= 0.5) {
+            letters[rand.nextInt(letters.length)][rand.nextInt(letters.length)] = PREFIXES[rand.nextInt(PREFIXES.length)];
+        }
+
     }
 
     public ArrayList<String> find() {
@@ -41,7 +41,7 @@ public class Board {
                 find(result, searched, "", i, j);
             }
         }
-
+        //testing: 
         //find(result, searched, "", 0, 2, 0);
         Collections.sort(result, new WordComparator());
         return result;
